@@ -9,7 +9,7 @@ const Provider = dynamic(() => import("./providers"), {
   ssr: false,
 });
 
-export const fontSans = FontSans({
+const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
