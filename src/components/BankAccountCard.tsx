@@ -1,4 +1,5 @@
 import { FormattedBankData } from "@/lib/formatting/dataFormatting";
+import formatMoney from "@/lib/formatting/fomrmatMoney";
 import { Badge } from "./ui/badge";
 import {
   Card,
@@ -25,7 +26,19 @@ const BankAccountCard = ({
         <CardDescription>{bankAccount.bankName}</CardDescription>
       </CardHeader>
       <CardContent>
-        <div>
+        <div className=" flex gap-4">
+          {bankAccount.interestRate?.map((interestRate, i) => (
+            <Card key={`${interestRate}-${i}`}>
+              <CardHeader>
+                <CardTitle>{interestRate.interest} %</CardTitle>
+                <CardDescription>
+                  fra {formatMoney(interestRate.interestAmountLimit)}
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          ))}
+        </div>
+        <div className="my-2">
           {bankAccount.membership?.map((membership) => (
             <Badge key={membership} className="mr-1">
               {membership}

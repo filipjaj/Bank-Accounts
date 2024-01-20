@@ -4,11 +4,6 @@ import { z } from "zod";
 
 import { create } from "zustand";
 
-type CustomFilterType = {
-  rente: number;
-  sum: number;
-};
-
 type FilterType = z.infer<typeof IncomingFiltersSchema>;
 
 export type FilterStoreType = {

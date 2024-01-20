@@ -1,6 +1,7 @@
 "use client";
 import useAge from "@/hooks/useAge";
 import useMoney from "@/hooks/useMoney";
+import useSavingYears from "@/hooks/useSavingYears";
 import MemberShipFilter from "./MemberShipFilter";
 import {
   Card,
@@ -10,10 +11,12 @@ import {
   CardTitle,
 } from "./ui/card";
 import { Input } from "./ui/input";
+import { Slider } from "./ui/slider";
 
 const Filters = () => {
   const { age, handleAgeChange } = useAge();
   const { money, handleMoneyChange } = useMoney();
+  const { savingYears, setSavingYears } = useSavingYears();
   return (
     <div className="mx-20 flex gap-4 flex-col my-10">
       <Card>
@@ -51,6 +54,20 @@ const Filters = () => {
               <p>kr</p>
             </div>
           </div>
+
+          {!!money && (
+            <div className=" mt-6 flex flex-col gap-3">
+              <p> Hvor lenge har du tenkt å spare?</p>
+              <div className=" flex items-center gap-2 w-60">
+                <Slider
+                  value={savingYears}
+                  onValueChange={setSavingYears}
+                  max={50}
+                />
+                <p>{savingYears} år</p>
+              </div>
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>
