@@ -2,7 +2,6 @@
 import useAge from "@/hooks/useAge";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import useMoney from "@/hooks/useMoney";
-import useSavingYears from "@/hooks/useSavingYears";
 import { SlidersHorizontalIcon } from "lucide-react";
 import MemberShipFilter from "./MemberShipFilter";
 import {
@@ -28,11 +27,10 @@ const Filters = () => {
 const DesktopFilters = () => {
   const { age, handleAgeChange } = useAge();
   const { money, handleMoneyChange } = useMoney();
-  const { savingYears, setSavingYears } = useSavingYears();
 
   return (
     <>
-      <div className={`mx-20 md:flex gap-4 flex-col my-10 `}>
+      <div className={`md:mx-20 md:flex gap-4 flex-col my-10 `}>
         <Card>
           <CardHeader>
             <CardTitle>Beste bankkonto for deg</CardTitle>
@@ -53,8 +51,6 @@ const DesktopFilters = () => {
               <p>år</p>
             </div>
 
-            <MemberShipFilter />
-
             <div className=" mt-6 flex flex-col gap-3">
               <p> Hvor mye penger har du på kontoen din?</p>
               <div className=" flex items-center gap-2">
@@ -68,6 +64,7 @@ const DesktopFilters = () => {
                 <p>kr</p>
               </div>
             </div>
+            <MemberShipFilter />
           </CardContent>
         </Card>
       </div>
