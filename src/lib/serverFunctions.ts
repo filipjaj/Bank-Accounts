@@ -2,6 +2,7 @@ import { z } from "zod";
 import { IncomingFiltersArraySchema } from "./formatting/filterItems";
 
 export const getBankAccounts = async (
+  pageParam?: unknown,
   filters?: z.infer<typeof IncomingFiltersArraySchema>
 ) => {
   const response = await fetch("/api/filters", {
@@ -11,6 +12,7 @@ export const getBankAccounts = async (
     },
     body: JSON.stringify({
       filters: filters ?? [],
+      page: pageParam ?? 1,
     }),
   });
 

@@ -120,8 +120,24 @@ const getTerms = (data: BankDataType[number]) => {
   return data.spesielle_betingelser;
 };
 
+const sortByInterestRate = (
+  a: BankDataType[number],
+  b: BankDataType[number]
+) => {
+  const aInterest = a.rentesats1;
+  const bInterest = b.rentesats1;
+
+  if (aInterest < bInterest) {
+    return 1;
+  }
+  if (aInterest > bInterest) {
+    return -1;
+  }
+  return 0;
+};
+
 const formatData = (data: BankDataType) => {
-  return data.map((bank) => {
+  return data.sort(sortByInterestRate).map((bank) => {
     return {
       bankName: getBankName(bank),
       accountName: getAccountName(bank),
