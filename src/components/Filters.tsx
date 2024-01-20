@@ -44,7 +44,7 @@ const DesktopFilters = () => {
               <Input
                 type="number"
                 placeholder="Alder"
-                className=" w-20"
+                className=" w-20 text-base"
                 value={age}
                 onChange={handleAgeChange}
               />
@@ -57,7 +57,7 @@ const DesktopFilters = () => {
                 <Input
                   type="number"
                   placeholder="Beløp"
-                  className=" w-30"
+                  className=" w-30 text-base"
                   value={money}
                   onChange={handleMoneyChange}
                 />
