@@ -1,7 +1,6 @@
-import useSavingYears from "@/hooks/useSavingYears";
+import useComparison from "@/hooks/useComparisonStore";
 import { FormattedBankData } from "@/lib/formatting/dataFormatting";
 import formatMoney from "@/lib/formatting/fomrmatMoney";
-import { ResponsiveLine } from "@nivo/line";
 import { Badge } from "./ui/badge";
 import {
   Card,
@@ -10,101 +9,26 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import { Checkbox } from "./ui/checkbox";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "./ui/collapsible";
 
-const generatCompoundInterest = (
-  initialAmount: number,
-  interestRate: number,
-  years: number
-) => {
-  console.log(initialAmount, interestRate, years);
-  const interest = interestRate / 100;
-  const values = Array.from({ length: years }, (_, i) => i + 1);
-
-  const compoundInterest = values.map((year) => {
-    const amount = initialAmount * Math.pow(1 + interest, year);
-    return {
-      x: year,
-      y: amount,
-    };
-  });
-
-  return compoundInterest;
-};
-
-const Chart = ({ interestRate, ...props }: { interestRate: number }) => {
-  const { savingYears } = useSavingYears();
-  console.log(savingYears);
-  console.log(interestRate);
-  return (
-    <div {...props}>
-      <ResponsiveLine
-        data={[
-          {
-            id: "Din bankkonto",
-            data: generatCompoundInterest(10000, 0.5, savingYears[0]),
-          },
-          {
-            id: "Beste bankkonto",
-            data: generatCompoundInterest(10000, interestRate, savingYears[0]),
-          },
-        ]}
-        margin={{ top: 10, right: 10, bottom: 40, left: 40 }}
-        xScale={{
-          type: "point",
-        }}
-        yScale={{
-          type: "linear",
-        }}
-        axisTop={null}
-        axisRight={null}
-        axisBottom={{
-          tickSize: 0,
-          tickPadding: 16,
-        }}
-        axisLeft={{
-          tickSize: 0,
-          tickValues: 5,
-          tickPadding: 16,
-        }}
-        colors={["#2563eb", "#e11d48"]}
-        pointSize={6}
-        useMesh={true}
-        gridYValues={6}
-        theme={{
-          tooltip: {
-            chip: {
-              borderRadius: "9999px",
-            },
-            container: {
-              fontSize: "12px",
-              textTransform: "capitalize",
-              borderRadius: "6px",
-            },
-          },
-          grid: {
-            line: {
-              stroke: "#f3f4f6",
-            },
-          },
-        }}
-        role="application"
-      />
-    </div>
-  );
-};
-
 const BankAccountCard = ({
   bankAccount,
 }: {
   bankAccount: FormattedBankData[number];
 }) => {
+  const { toggleComparison, isInComparison } = useComparison();
   return (
-    <Card>
+    <Card className="relative z-0">
+      <Checkbox
+        className="absolute bottom-3 right-3 rounded-full w-10 h-10"
+        onCheckedChange={(checked) => toggleComparison(bankAccount)}
+        checked={isInComparison(bankAccount)}
+      ></Checkbox>
       <CardHeader>
         <CardTitle className="break-all  text-wrap text-xl">
           {bankAccount.accountName}

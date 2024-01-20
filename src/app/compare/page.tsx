@@ -1,9 +1,7 @@
+import Comparison from "@/components/Comparison";
+
 const ComparePage = () => {
-  return (
-    <div>
-      <h1>Compare</h1>
-    </div>
-  );
+  return <Comparison />;
 };
 
 export default ComparePage;

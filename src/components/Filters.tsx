@@ -3,17 +3,19 @@ import useAge from "@/hooks/useAge";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import useMoney from "@/hooks/useMoney";
 import { SlidersHorizontalIcon } from "lucide-react";
+import Link from "next/link";
 import MemberShipFilter from "./MemberShipFilter";
+import { buttonVariants } from "./ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "./ui/card";
 import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
 import { Input } from "./ui/input";
-
 const Filters = () => {
   const isDesktop = useMediaQuery("(min-width: 768px");
 
@@ -66,6 +68,14 @@ const DesktopFilters = () => {
             </div>
             <MemberShipFilter />
           </CardContent>
+          <CardFooter>
+            <Link
+              href="/compare"
+              className={buttonVariants({ variant: "outline" })}
+            >
+              Sammenlign bankkontoer
+            </Link>
+          </CardFooter>
         </Card>
       </div>
     </>
@@ -75,7 +85,7 @@ const DesktopFilters = () => {
 const MobileFilters = () => {
   return (
     <Drawer>
-      <DrawerTrigger className="  rounded-full p-5    bg-zinc-900  fixed left-6 bottom-6  shadow-lg">
+      <DrawerTrigger className="  rounded-full p-5 z-10    bg-zinc-900  fixed left-6 bottom-6  shadow-lg">
         <SlidersHorizontalIcon className=" text-zinc-100" />
       </DrawerTrigger>
 
