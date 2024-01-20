@@ -22,15 +22,19 @@ const BankAccountCard = ({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{bankAccount.accountName}</CardTitle>
+        <CardTitle className="break-all  text-wrap text-xl">
+          {bankAccount.accountName}
+        </CardTitle>
         <CardDescription>{bankAccount.bankName}</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className=" flex gap-4">
+        <div className=" flex gap-4 overflow-auto">
           {bankAccount.interestRate?.map((interestRate, i) => (
             <Card key={`${interestRate}-${i}`}>
-              <CardHeader>
-                <CardTitle>{interestRate.interest} %</CardTitle>
+              <CardHeader className="p-3 space-y-0">
+                <CardTitle className=" text-base">
+                  {interestRate.interest} %
+                </CardTitle>
                 <CardDescription>
                   fra {formatMoney(interestRate.interestAmountLimit)}
                 </CardDescription>
@@ -40,8 +44,10 @@ const BankAccountCard = ({
         </div>
         <div className="my-2">
           {bankAccount.membership?.map((membership) => (
-            <Badge key={membership} className="mr-1">
-              {membership}
+            <Badge key={membership} className="mr-1 max-w-full">
+              <p className="text-nowrap overflow-clip text-ellipsis">
+                {membership}
+              </p>
             </Badge>
           ))}
         </div>

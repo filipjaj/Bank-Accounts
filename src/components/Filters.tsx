@@ -13,12 +13,16 @@ import {
 import { Input } from "./ui/input";
 import { Slider } from "./ui/slider";
 
-const Filters = () => {
+const Filters = ({ hideOnMobile = true }: { hideOnMobile?: boolean }) => {
   const { age, handleAgeChange } = useAge();
   const { money, handleMoneyChange } = useMoney();
   const { savingYears, setSavingYears } = useSavingYears();
   return (
-    <div className="mx-20 flex gap-4 flex-col my-10">
+    <div
+      className={`mx-20 md:flex gap-4 flex-col my-10 ${
+        hideOnMobile ? "hidden" : ""
+      }`}
+    >
       <Card>
         <CardHeader>
           <CardTitle>Beste bankkonto for deg</CardTitle>
@@ -72,6 +76,10 @@ const Filters = () => {
       </Card>
     </div>
   );
+};
+
+const MobileFilters = () => {
+  return;
 };
 
 export default Filters;

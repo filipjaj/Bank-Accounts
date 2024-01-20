@@ -6,7 +6,7 @@ import BankAccountCard from "./BankAccountCard";
 const BankAccountList = () => {
   const { data } = useAccounts();
   return (
-    <div className="mx-20 flex gap-4 flex-col my-10">
+    <div className=" flex gap-4 flex-col m-5 ">
       {data?.map((bankAccount) => (
         <BankAccountCard
           key={bankAccount.accountName}
