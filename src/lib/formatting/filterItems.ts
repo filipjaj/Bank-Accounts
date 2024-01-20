@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { BankDataType } from "../bank-data";
+import formatData from "./dataFormatting";
 import { getFilterFunction } from "./filterFunctions";
 
 export const FiltersSchema = z.enum([
@@ -11,7 +12,8 @@ export const FiltersSchema = z.enum([
   "manedlig_sparing",
   "medlemskap",
 ]);
-const IncomingFiltersSchema = z.union([
+
+export const IncomingFiltersSchema = z.union([
   z.object({
     key: z.enum(["gruppe", "markedsomraade"]),
     value: z.string(),
@@ -25,25 +27,45 @@ const IncomingFiltersSchema = z.union([
     value: z.number(),
   }),
 ]);
-const IncomingFiltersArraySchema = z.array(IncomingFiltersSchema);
+
+export const IncomingFiltersArraySchema = z.array(IncomingFiltersSchema);
+
+const removeEmptyFilters = (
+  incomingFilters: z.infer<typeof IncomingFiltersArraySchema>
+) => {
+  const filteredFilters = incomingFilters.filter((filter) => {
+    const { key, value } = filter;
+
+    if (key === "medlemskap") {
+      return value.length > 0;
+    }
+
+    return !!value;
+  });
+
+  return filteredFilters;
+};
 
 const filterItems = (
   data: BankDataType,
   incomingFilters: z.infer<typeof IncomingFiltersArraySchema>
 ) => {
-  const filters = IncomingFiltersArraySchema.parse(incomingFilters);
+  const nonEmptyFilters = removeEmptyFilters(incomingFilters);
+  const filters = IncomingFiltersArraySchema.parse(nonEmptyFilters);
 
   const filteredData = data.filter((item) => {
     return filters.every((filter) => {
       const { key, value } = filter;
 
-      const filterFunction = getFilterFunction(filter.key);
+      const filterFunction = getFilterFunction(key);
       // @ts-ignore
-      return filterFunction(item, filter.value);
+      const result = filterFunction(item, value);
+
+      return result;
     });
   });
 
-  return filteredData;
+  return formatData(filteredData);
 };
 
 export default filterItems;

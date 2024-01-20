@@ -1,9 +1,17 @@
-import { useState } from "react";
+import useFiltering from "./useFilterStore";
 import useFilters from "./useFilters";
 
 const useMembership = () => {
+  const { updateFilter, getFilter } = useFiltering();
+  const memberships = getFilter<string[]>("medlemskap", []);
+  const setMemberships = (value: string[]) => {
+    updateFilter({
+      key: "medlemskap",
+      value,
+    });
+  };
+
   const { data } = useFilters();
-  const [memberships, setMemberships] = useState<string[]>([]);
 
   const isSelected = (membership: string) => {
     return memberships.includes(membership);

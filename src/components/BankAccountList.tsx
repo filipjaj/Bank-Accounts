@@ -1,14 +1,10 @@
 "use client";
-import { getBankAccounts } from "@/app/page";
-import { FormattedBankData } from "@/lib/formatting/dataFormatting";
-import { useQuery } from "@tanstack/react-query";
+
+import useAccounts from "@/hooks/useAccounts";
 import BankAccountCard from "./BankAccountCard";
 
 const BankAccountList = () => {
-  const { data, isLoading, isError } = useQuery<FormattedBankData>({
-    queryKey: ["accounts"],
-    queryFn: getBankAccounts,
-  });
+  const { data } = useAccounts();
   return (
     <div className="mx-20 flex gap-4 flex-col my-10">
       {data?.map((bankAccount) => (

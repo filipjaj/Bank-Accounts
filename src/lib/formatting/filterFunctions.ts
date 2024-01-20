@@ -45,6 +45,7 @@ const filterMembership = (
   data: BankDataType[number],
   filterValue: string[]
 ) => {
+  if (filterValue?.length === 0) return true;
   const membership = data.medlemskap_tekst
     .split(",")
     .map((item) => item.trim());
@@ -52,7 +53,7 @@ const filterMembership = (
   const membershipSet = new Set(membership);
   const membershipArray = Array.from(membershipSet);
 
-  const membershipIsIncluded = filterValue.every((item) =>
+  const membershipIsIncluded = filterValue.some((item) =>
     membershipArray.includes(item)
   );
 

@@ -88,8 +88,6 @@ export const getArrayFromString = (data: BankDataType, key: BankDataKeys) => {
   const uniqueValuesSet = new Set(uniqueValuesArray);
   const uniqueValuesArray2 = Array.from(uniqueValuesSet);
 
-  console.log(uniqueValuesArray2);
-
   return {
     type: "array",
     values: uniqueValuesArray2,
@@ -107,6 +105,9 @@ export const numberIsBetween = (
 ) => {
   if (typeof min === "string" || typeof max === "string") {
     return false;
+  }
+  if (min === 0 && max === 0) {
+    return true;
   }
   return number >= min && number <= max;
 };

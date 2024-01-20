@@ -13,7 +13,8 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const body = await request.json();
-  console.log(body);
+
+  console.log("body", body);
 
   const result = filterItems(bankData.feed.entry, body.filters);
 
