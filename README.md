@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Kravspec
 
-## Getting Started
+- Muligheter for filtrering
+  - Område: Lokal/Nasjonal
+  - Krav om kundeforhold
+  - Krav om medlemskap
+  - Krav om månedlig sparing
+  - Kontotype
+- Et API-lag som server formattert data
+- Mulighet for å sammenligne to kontoer opp mot hverandre
+  - ie Nåværende konto
+  - Du sparer 2 kebaber i mnd på å bytte konto (gi kunden mulighet til å definere hva enheten er)
+- AI - rådgivning?
+-
 
-First, run the development server:
+Vi ønsker å hjelpe nordmenn å velge den beste sparekontoen, og skal lage en ny tjeneste for dette.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Vi har fått tilsendt en fil med XML-data fra Finansportalen (vedlagt) som kan brukes.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Din oppgave er å lage en enkel web-applikasjon som viser frem dataene, og guider brukerne til hvilken konto som passer dem best. Du står fritt til å bruke de språk og rammeverk du selv ønsker.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Her er noen forslag til ting du kan fokusere på:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Oversiktlig og pent design?
+Brukeren fyller inn sin nåværende bankkonto og får innsikt i hvor mye penger det er å spare ved å bytte til en bedre konto?
+En gøyal chatbot istedenfor vanlig skjema?
+Tilgjengelighet?
+Berike oversikten med AI-generert tekst?
 
-## Learn More
+Du vil sannsynligvis ende opp med å mye tid hvis du prøver å gjøre alt, så vi anbefaler at du bare velger noen få fokusområder. Og husk at dette bare er forslag. Hvis du noen egne ideer, så vil vi gjerne se det!
 
-To learn more about Next.js, take a look at the following resources:
+Skriv gjerne også litt kort om hvilke avgjørelser og forutsetninger du har tatt. Hva hadde du gjort hvis du hadde hatt mer tid til å bygge videre på tjenesten?
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Greit å vite:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Det er er mye overflødige data i XML-filen. Du trenger kun å vise frem de dataene du mener er relevante for en typisk forbruker.
+Fint om du kan sende oss en mappe som er lett å kjøre lokalt, eller legge besvarelsen ut på git.
 
-## Deploy on Vercel
+Du har 48 timer på deg til å sende tilbake besvarelsen.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Det er bare å ta kontakt om du har noen spørsmål.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Lykke til!
