@@ -3,6 +3,7 @@ import { buttonVariants } from "@/components/ui/button";
 import useComparison from "@/hooks/useComparisonStore";
 import { PiggyBankIcon } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import {
   Drawer,
@@ -14,13 +15,14 @@ import {
 
 const CompareModal = () => {
   const { count, comparison } = useComparison();
+  const [collapsed, setCollapsed] = useState(true);
   return (
-    <Drawer>
+    <Drawer open={!collapsed} onOpenChange={(status) => setCollapsed(!status)}>
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>Sammenlign bankkontoer</DrawerTitle>
         </DrawerHeader>
-        <div className="max-w-md w-full mx-auto flex flex-col overflow-auto p-4 rounded-t-[10px] items-center pb-28">
+        <div className=" mx-auto flex flex-col overflow-auto p-4 rounded-t-[10px] items-center pb-28">
           <div className="flex flex-col mx-6 mb-4 gap-2 ">
             {comparison.map((compare) => (
               <Card
@@ -44,6 +46,7 @@ const CompareModal = () => {
             ))}
           </div>
           <Link
+            onClick={() => setCollapsed(!collapsed)}
             href="/compare"
             className={`${buttonVariants({
               variant: "default",

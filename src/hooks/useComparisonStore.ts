@@ -1,6 +1,7 @@
 "use client";
 
 import { FormattedBankData } from "@/lib/formatting/dataFormatting";
+
 import _ from "lodash";
 import { useMemo } from "react";
 import { create } from "zustand";
@@ -33,6 +34,10 @@ export type ComparisonStoreType = {
   addToComparison: (bank: FormattedBankData[number]) => void;
   removeFromComparison: (bank: FormattedBankData[number]) => void;
   clearComparison: () => void;
+  savingYears: number[];
+  setSavingYears: (savingYears: number[]) => void;
+  startingBalance: number[];
+  setStartingBalance: (startingBalance: number[]) => void;
 };
 
 const useComparisonStore = create(
@@ -48,6 +53,12 @@ const useComparisonStore = create(
         })),
 
       clearComparison: () => set({ comparison: [] }),
+      savingYears: [10],
+      setSavingYears: (savingYears: number[]) =>
+        set({ savingYears: savingYears }),
+      startingBalance: [10000],
+      setStartingBalance: (startingBalance: number[]) =>
+        set({ startingBalance: startingBalance }),
     }),
     {
       name: "comparison-storage",
@@ -56,8 +67,18 @@ const useComparisonStore = create(
 );
 
 const useComparison = () => {
-  const { comparison, addToComparison, removeFromComparison, clearComparison } =
-    useComparisonStore();
+  const comparison = useComparisonStore((state) => state.comparison);
+  const addToComparison = useComparisonStore((state) => state.addToComparison);
+  const removeFromComparison = useComparisonStore(
+    (state) => state.removeFromComparison
+  );
+  const clearComparison = useComparisonStore((state) => state.clearComparison);
+  const savingYears = useComparisonStore((state) => state.savingYears);
+  const setSavingYears = useComparisonStore((state) => state.setSavingYears);
+  const startingBalance = useComparisonStore((state) => state.startingBalance);
+  const setStartingBalance = useComparisonStore(
+    (state) => state.setStartingBalance
+  );
 
   const toggleComparison = (bank: FormattedBankData[number]) => {
     if (comparison.find((f) => _.isEqual(f, bank))) {
@@ -74,9 +95,9 @@ const useComparison = () => {
   const compareCompoundInterest = useMemo(() => {
     const data = comparison.map((bank) => {
       const compoundInterest = generatCompoundInterest(
-        10000,
+        startingBalance[0],
         +bank?.interestRate?.[0]?.interest ?? 0,
-        10
+        savingYears[0]
       );
       return {
         id: bank.bankName + " - " + bank.accountName,
@@ -85,7 +106,7 @@ const useComparison = () => {
       };
     });
     return data;
-  }, [comparison]);
+  }, [comparison, savingYears, startingBalance]);
 
   return {
     comparison,
@@ -94,6 +115,10 @@ const useComparison = () => {
     isInComparison,
     compareCompoundInterest,
     count: comparison.length,
+    savingYears,
+    setSavingYears,
+    startingBalance,
+    setStartingBalance,
   };
 };
 

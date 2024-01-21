@@ -14,12 +14,14 @@ const BankAccountList = () => {
       }
     },
   });
+
+  console.log(data);
   return (
     <>
       <div className=" flex gap-4 flex-col m-5 ">
         {data?.map((bankAccount) => (
           <BankAccountCard
-            key={bankAccount.accountName}
+            key={`${bankAccount.accountName}-${bankAccount.bankName}-listing`}
             bankAccount={bankAccount}
           />
         ))}

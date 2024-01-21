@@ -2,6 +2,7 @@ import bankData from "@/lib/bank-data";
 import { FormattedBankData } from "@/lib/formatting/dataFormatting";
 import filterItems from "@/lib/formatting/filterItems";
 import getAllFilters from "@/lib/formatting/getAllFilters";
+import { convertToPagination } from "@/lib/utils";
 export async function GET() {
   const filters = getAllFilters(bankData.feed.entry);
 
@@ -15,14 +16,15 @@ export async function GET() {
 export async function POST(request: Request) {
   const body = await request.json();
 
-  const page = body.page ?? 1;
+  const pageInput = body.page ?? 1;
   const pageSize = body.pageSize ?? 10;
 
   const resultFull = filterItems(bankData.feed.entry, body.filters);
 
-  const result = resultFull.slice(
-    (page - 1) * pageSize,
-    (page - 1) * pageSize + pageSize
+  const { result, numberOfPages, page, total } = convertToPagination(
+    resultFull,
+    pageInput,
+    pageSize
   );
 
   return new Response(
@@ -31,8 +33,8 @@ export async function POST(request: Request) {
         result,
         page,
         pageSize,
-        numberOfPages: Math.ceil(result.length / pageSize),
-        total: result.length,
+        numberOfPages,
+        total,
       },
       null,
       4

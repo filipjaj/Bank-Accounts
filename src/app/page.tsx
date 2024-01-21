@@ -1,6 +1,5 @@
 import BankAccountList from "@/components/BankAccountList";
-import CompareModal from "@/components/CompareModal";
-import Filters from "@/components/Filters";
+import Filters from "@/components/FilterComponents/Filters";
 import { getBankAccounts } from "@/lib/serverFunctions";
 
 import {
@@ -18,8 +17,6 @@ export default async function Home() {
   });
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <CompareModal />
-
       <Filters />
       <BankAccountList />
     </HydrationBoundary>

@@ -7,14 +7,14 @@ const useAccounts = () => {
   const { activeFilters } = useFiltering();
   const { data, isLoading, isError, fetchNextPage, hasNextPage } =
     useInfiniteQuery<APIResponse>({
-      queryKey: ["accounts", activeFilters.filter((f) => !!f.value)],
+      queryKey: ["accounts", activeFilters],
       queryFn: ({ pageParam = 1 }) => getBankAccounts(pageParam, activeFilters),
       initialPageParam: 1,
       getNextPageParam: (lastPage) => lastPage.page + 1,
     });
-
+  console.log(data);
   return {
-    data: data?.pages.flatMap((page) => page.result).flat() ?? [],
+    data: data?.pages?.flatMap((page) => page.result).flat() ?? [],
     isLoading,
     isError,
     fetchNextPage,
