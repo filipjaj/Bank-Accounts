@@ -13,6 +13,7 @@ const getAllFilters = (data: BankDataType) => {
   const marketArea = getUniqueStringValues(data, "markedsomraade");
   const age = getNumberSpanTwoKeys(data, "min_alder", "maks_alder");
   const sum = getNumberSpanTwoKeys(data, "min_belop", "maks_belop");
+  const bank = getUniqueStringValues(data, "leverandor_tekst");
   const monthlySaving = getNumberSpanTwoKeys(
     data,
     "manedlig_sparing_min_belop",
@@ -30,6 +31,7 @@ const getAllFilters = (data: BankDataType) => {
     monthlySaving,
     isMonthlySaving,
     membership,
+    bank,
   };
 };
 

@@ -11,6 +11,7 @@ export const FiltersSchema = z.enum([
   "sum",
   "manedlig_sparing",
   "medlemskap",
+  "bank",
 ]);
 
 export const IncomingFiltersSchema = z.union([
@@ -19,7 +20,7 @@ export const IncomingFiltersSchema = z.union([
     value: z.string(),
   }),
   z.object({
-    key: z.enum(["medlemskap", "gruppe"]),
+    key: z.enum(["medlemskap", "gruppe", "bank"]),
     value: z.array(z.string()),
   }),
   z.object({
@@ -28,6 +29,13 @@ export const IncomingFiltersSchema = z.union([
   }),
 ]);
 
+// TODO: fix the filter function so that it also works when certain filters are not included
+const defaultFilters = [
+  {
+    key: "medlemskap",
+    value: [],
+  },
+];
 export const IncomingFiltersArraySchema = z.array(IncomingFiltersSchema);
 
 const removeEmptyFilters = (
@@ -36,14 +44,18 @@ const removeEmptyFilters = (
   const filteredFilters = incomingFilters.filter((filter) => {
     const { key, value } = filter;
 
-    if (key === "medlemskap" || key === "gruppe") {
-      return value.length > 0;
-    }
-
     return !!value;
   });
 
-  return filteredFilters;
+  const filteredeDefaults = defaultFilters.filter((filter) => {
+    const { key } = filter;
+
+    const findFilter = filteredFilters.find((f) => f.key === key);
+
+    return !findFilter;
+  });
+
+  return [...filteredFilters, ...filteredeDefaults];
 };
 
 const filterItems = (
@@ -52,7 +64,7 @@ const filterItems = (
 ) => {
   const nonEmptyFilters = removeEmptyFilters(incomingFilters);
   const filters = IncomingFiltersArraySchema.parse(nonEmptyFilters);
-
+  console.log(filters);
   const filteredData = data.filter((item) => {
     return filters.every((filter) => {
       const { key, value } = filter;

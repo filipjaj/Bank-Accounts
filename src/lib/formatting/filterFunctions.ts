@@ -49,7 +49,7 @@ const filterMembership = (
   data: BankDataType[number],
   filterValue: string[]
 ) => {
-  if (filterValue?.length === 0) return true;
+  if (filterValue?.length === 0) return data.medlemskap_tekst === "";
   const membership = data.medlemskap_tekst
     .split(",")
     .map((item) => item.trim());
@@ -62,6 +62,14 @@ const filterMembership = (
   );
 
   return membershipIsIncluded;
+};
+
+const filterBank = (data: BankDataType[number], filterValue: string[]) => {
+  if (filterValue?.length === 0) return true;
+
+  const bankIsIncluded = filterValue.includes(data.leverandor_tekst);
+
+  return bankIsIncluded;
 };
 
 type FilterFunctionString = (
@@ -98,6 +106,10 @@ export const getFilterFunction = (filter: z.infer<typeof FiltersSchema>) => {
 
   if (validatedFilter === "alder") {
     return filterAge as FilterFunctionNumber;
+  }
+
+  if (validatedFilter === "bank") {
+    return filterBank as FilterFunctionStringArray;
   }
 
   if (validatedFilter === "sum") {
