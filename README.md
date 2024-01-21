@@ -31,6 +31,8 @@ Det også bygd et API-lag som formatterer og filtrerer ut data basert på foresp
 - Som UI bibliotek er shadcn/ui brukt, som gir en litt "generisk" følelse, som jeg gjerne skulle bruk mer tid på å tilpasse.
 - Radix som er underligende under shadcn/ui har jeg opplevd noen issues med tidligere, som det kan brukes mer tid på å undersøke.
 - API-laget kan på sikt utvides til å bruke en database, der tjenesten kan supplere data. Feks historisk rente, og hvordan banken tilpasser seg når styringsrenten endres.
+- Accessibility er hensyntatt ved at Radix har en del innebygd, utover det er det mye som kan gjøres
+- Optimalisering av innlastning av side, første load av data kan statisk genereres feks.
 
 
 
