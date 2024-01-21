@@ -52,7 +52,7 @@ export default async function Image() {
             color: "white",
           }}
         >
-          Med renter fra {account.interestRate.interest} %
+          Med renter fra {account.interestRate?.[0]?.interest} %
         </p>
       </div>
     ),
