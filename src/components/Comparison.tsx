@@ -33,7 +33,7 @@ const Comparison = () => {
 
   if (!compareCompoundInterest.length)
     return (
-      <Card className="relative p-2 m-10 ">
+      <Card className="relative p-2 md:m-10 m-3 ">
         <CardHeader>
           <h2 className="text-xl font-semibold">Sammenlign bankkontoer</h2>
           <p className="text-sm text-muted-foreground">
@@ -49,7 +49,7 @@ const Comparison = () => {
           </div>
           <Link
             href="/"
-            className={`flex  items-center gap-4 ${buttonVariants({
+            className={`flex  items-center gap-2 ${buttonVariants({
               variant: "default",
             })} 
          `}
