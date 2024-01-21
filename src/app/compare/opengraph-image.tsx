@@ -29,7 +29,7 @@ export default async function Image() {
       // ImageResponse JSX element
       <div
         style={{
-          fontSize: 20,
+          fontSize: 30,
           background: "#dc2626",
           width: "100%",
           height: "100%",
@@ -46,14 +46,9 @@ export default async function Image() {
         </p>
         <p
           style={{
-            fontSize: 10,
+            fontSize: 20,
             background: "#dc2626",
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
+
             color: "white",
           }}
         >

@@ -18,8 +18,8 @@ export default async function Image() {
   //   const interSemiBold = fetch(
   //     new URL("./Inter-SemiBold.ttf", import.meta.url)
   //   ).then((res) => res.arrayBuffer());
-  const url = new URL("/api/all");
-  const res = await fetch(url);
+
+  const res = await fetch("https://www.kontovelger.no/api/all");
 
   const data = await res.json();
   const account = data?.[0];
@@ -29,7 +29,7 @@ export default async function Image() {
       // ImageResponse JSX element
       <div
         style={{
-          fontSize: 128,
+          fontSize: 30,
           background: "#dc2626",
           width: "100%",
           height: "100%",
@@ -41,11 +41,19 @@ export default async function Image() {
         }}
       >
         <p>
-          {" "}
           Den beste kontoen akkurat nå er {account.accountName} fra{" "}
           {account.bankName}
         </p>
-        <p> Med renter fra {account.interestRate.interest} %</p>
+        <p
+          style={{
+            fontSize: 20,
+            background: "#dc2626",
+
+            color: "white",
+          }}
+        >
+          Med renter fra {account.interestRate.interest} %
+        </p>
       </div>
     ),
     // ImageResponse options
