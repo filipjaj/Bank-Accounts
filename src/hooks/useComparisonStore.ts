@@ -84,6 +84,8 @@ const useComparison = () => {
   const toggleComparison = (bank: FormattedBankData[number]) => {
     if (comparison.find((f) => _.isEqual(f, bank))) {
       removeFromComparison(bank);
+
+      toast.success(`Fjernet ${bank.accountName} fra sammenligningen`);
     } else {
       addToComparison(bank);
       toast.success(`La til ${bank.accountName} i sammenligningen`);

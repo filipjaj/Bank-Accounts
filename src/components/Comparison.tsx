@@ -6,9 +6,16 @@ import { ResponsiveLine } from "@nivo/line";
 import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { toast } from "sonner";
 import { Badge } from "./ui/badge";
-import { buttonVariants } from "./ui/button";
-import { Card, CardContent, CardHeader } from "./ui/card";
+import { Button, buttonVariants } from "./ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
 import { Slider } from "./ui/slider";
 
 const Comparison = () => {
@@ -57,6 +64,10 @@ const Comparison = () => {
   return (
     <div className="md:p-10 p-3  mt-10 ">
       <h1 className="text-2xl font-semibold">Sammenligning</h1>
+      <p className="text-sm text-muted-foreground">
+        Sammenligning av utviklingen av bankkontoene du har valgt, basert på
+        startbeløp og tidshorisont
+      </p>
       <div className="aspect-[1] md:aspect-video mx-10">
         <ResponsiveLine
           data={compareCompoundInterest}
@@ -140,15 +151,16 @@ const Comparison = () => {
                 <span className="font-semibold">{tempYears[0]} år</span>
               </p>
 
-              <button
+              <Button
                 onClick={() => {
                   setSavingYears(tempYears);
                   setStartingBalance(tempSaving);
+                  toast.success("Sammenligningsgrunnlag oppdatert");
                 }}
-                className="bg-zinc-900 text-zinc-100 font-semibold rounded-md p-2"
+                variant="default"
               >
                 Oppdater
-              </button>
+              </Button>
             </div>
           </div>
         </CardContent>
@@ -166,7 +178,12 @@ const Comparison = () => {
               >
                 Fjern
               </Badge>
-              <CardHeader>{data.id} </CardHeader>
+              <CardHeader>
+                <CardTitle>{data.id}</CardTitle>
+                <CardDescription>
+                  {data.allData.interestRate[0]?.interest} % rente
+                </CardDescription>
+              </CardHeader>
               <CardContent>
                 <div className={` flex gap-4 overflow-auto   `}>
                   {data.data.map((interestRate, i) => (
@@ -176,7 +193,7 @@ const Comparison = () => {
                           {formatMoney(interestRate.y)}
                         </p>
                         <p className=" text-sm  text-muted-foreground  ">
-                          {interestRate.x} år{" "}
+                          {interestRate.x} år
                         </p>
                       </CardHeader>
                     </Card>
