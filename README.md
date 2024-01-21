@@ -1,43 +1,36 @@
-## Kravspec
 
-- Muligheter for filtrering
-  - Område: Lokal/Nasjonal
-  - Krav om kundeforhold
-  - Krav om medlemskap
-  - Krav om månedlig sparing
-  - Kontotype
-- Et API-lag som server formattert data
-- Mulighet for å sammenligne to kontoer opp mot hverandre
-  - ie Nåværende konto
-  - Du sparer 2 kebaber i mnd på å bytte konto (gi kunden mulighet til å definere hva enheten er)
-- AI - rådgivning?
--
+# Løsningsforslag
 
-Vi ønsker å hjelpe nordmenn å velge den beste sparekontoen, og skal lage en ny tjeneste for dette.
+Løsningsforslaget er bygget med inspirasjon fra Finansportalen sin egen sammenligningstjeneste. 
 
-Vi har fått tilsendt en fil med XML-data fra Finansportalen (vedlagt) som kan brukes.
+- Hoved funksjonaliteten som er bygd er sammenligningstjenesten der du kan sammenligne flere kontoer opp mot hverandre, og se hvordan utviklingen på disse kan bli om renten holder seg stabil.
 
-Din oppgave er å lage en enkel web-applikasjon som viser frem dataene, og guider brukerne til hvilken konto som passer dem best. Du står fritt til å bruke de språk og rammeverk du selv ønsker.
+- Tanken rundt løsningen er å bygge den så stabil som mulig gitt forutsetningen, så data og filter kan tilpasses og utvikles basert på A/B tester og bruker feedback. Gitt forutsetningene er det forsatt mye forbedringspotesialle der. 
 
-Her er noen forslag til ting du kan fokusere på:
+## Forutsetninger
+Case oppgaven er løst under fortusetningen at XML-filen kan endre seg, men at dette ikke vil skjer veldig regelmessig (maks 1 gang i måneden, og ofte sjeldnere). Og at de fleste kunder er mest interessert i den renten de får fra første krone. 
 
-Oversiktlig og pent design?
-Brukeren fyller inn sin nåværende bankkonto og får innsikt i hvor mye penger det er å spare ved å bytte til en bedre konto?
-En gøyal chatbot istedenfor vanlig skjema?
-Tilgjengelighet?
-Berike oversikten med AI-generert tekst?
+Utover det vil kunden se all bankkontoer som er tilgjengelig for allmenheten uten å filtrere, dette inkluderer blandt annet lokale tilbud da det varierer hvor strengt kriteriene for å benytte seg av disse. Derfor er balndt annet kontoer som forutsetter medlemskap i feks LO filtrert ut so standard, med mulighet for å vise de.
 
-Du vil sannsynligvis ende opp med å mye tid hvis du prøver å gjøre alt, så vi anbefaler at du bare velger noen få fokusområder. Og husk at dette bare er forslag. Hvis du noen egne ideer, så vil vi gjerne se det!
 
-Skriv gjerne også litt kort om hvilke avgjørelser og forutsetninger du har tatt. Hva hadde du gjort hvis du hadde hatt mer tid til å bygge videre på tjenesten?
+Det også bygd et API-lag som formatterer og filtrerer ut data basert på forespørsler fra frontend
 
-Greit å vite:
 
-Det er er mye overflødige data i XML-filen. Du trenger kun å vise frem de dataene du mener er relevante for en typisk forbruker.
-Fint om du kan sende oss en mappe som er lett å kjøre lokalt, eller legge besvarelsen ut på git.
+## Mangler, bugs og videreutvikling
 
-Du har 48 timer på deg til å sende tilbake besvarelsen.
+- En del komponenter/ funskjoner er mindre DRY enn det kunne vært.
+- Følgende filter kan legges inn:
+  -    Krav om månedlig sparing
+  -    Krav om kundeforhold
+  -    Område: Lokal/Nasjonal
+  -    Trapp type
 
-Det er bare å ta kontakt om du har noen spørsmål.
+- Anbefalningen er pr nå kun basert på rente fra først krone, dette kan opptimaliseres for å gi brukeren en mer personlig anbefaling basert på spare horisont, og total sum.
+- UX/ brukeropplevelsen kan bli en del mer intuitiv
+- Som UI bibliotek er shadcn/ui brukt, som gir en litt "generisk" følelse, som jeg gjerne skulle bruk mer tid på å tilpasse.
+- Radix som er underligende under shadcn/ui har jeg opplevd noen issues med tidligere, som det kan brukes mer tid på å undersøke.
+- API-laget kan på sikt utvides til å bruke en database, der tjenesten kan supplere data. Feks historisk rente, og hvordan banken tilpasser seg når styringsrenten endres.
 
-Lykke til!
+
+
+
