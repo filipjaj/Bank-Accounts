@@ -9,7 +9,10 @@ Løsningsforslaget er bygget med inspirasjon fra Finansportalen sin egen sammenl
 
 ## Forutsetninger
 Case oppgaven er løst under fortusetningen at XML-filen kan endre seg, men at dette ikke vil skjer veldig regelmessig (maks 1 gang i måneden, og ofte sjeldnere). Og at de fleste kunder er mest interessert i den renten de får fra første krone. 
-Derfor er det lagt opp for en semi-manuell konvertering/validering fra xml -> JSON/Typescriot
+
+
+Derfor er det lagt opp for en semi-manuell konvertering/validering fra xml -> JSON/Typescriot.
+  
 Utover det vil kunden se all bankkontoer som er tilgjengelig for allmenheten uten å filtrere, dette inkluderer blandt annet lokale tilbud da det varierer hvor strengt kriteriene for å benytte seg av disse. Derfor er balndt annet kontoer som forutsetter medlemskap i feks LO filtrert ut so standard, med mulighet for å vise de.
 
 
