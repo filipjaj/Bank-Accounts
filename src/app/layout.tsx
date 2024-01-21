@@ -22,6 +22,7 @@ const fontSans = FontSans({
 export const metadata: Metadata = {
   title: "Kontovelger.no",
   description: "Finn den beste bankkontoen",
+  metadataBase: new URL("https://kontovelger.no"),
 };
 
 export default function RootLayout({

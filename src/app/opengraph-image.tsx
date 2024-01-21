@@ -19,7 +19,7 @@ export default async function Image() {
   //     new URL("./Inter-SemiBold.ttf", import.meta.url)
   //   ).then((res) => res.arrayBuffer());
 
-  const res = await fetch("https://www.kontovelger.no/api/all");
+  const res = await fetch("/api/all");
 
   const data = await res.json();
   const account = data?.[0];

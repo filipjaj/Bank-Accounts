@@ -29,7 +29,7 @@ export default async function Image() {
       // ImageResponse JSX element
       <div
         style={{
-          fontSize: 128,
+          fontSize: 20,
           background: "#dc2626",
           width: "100%",
           height: "100%",
@@ -41,11 +41,24 @@ export default async function Image() {
         }}
       >
         <p>
-          {" "}
           Den beste kontoen akkurat nå er {account.accountName} fra{" "}
           {account.bankName}
         </p>
-        <p> Med renter fra {account.interestRate.interest} %</p>
+        <p
+          style={{
+            fontSize: 10,
+            background: "#dc2626",
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            color: "white",
+          }}
+        >
+          Med renter fra {account.interestRate.interest} %
+        </p>
       </div>
     ),
     // ImageResponse options
