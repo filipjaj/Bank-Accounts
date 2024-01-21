@@ -23,6 +23,11 @@ export const metadata: Metadata = {
   title: "Kontovelger.no",
   description: "Finn den beste bankkontoen",
   metadataBase: new URL("https://kontovelger.no"),
+  openGraph: {
+    url: "https://kontovelger.no",
+    title: "Kontovelger.no",
+    description: "Finn den beste bankkontoen",
+  },
 };
 
 export default function RootLayout({

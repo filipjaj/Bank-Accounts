@@ -18,8 +18,8 @@ export default async function Image() {
   //   const interSemiBold = fetch(
   //     new URL("./Inter-SemiBold.ttf", import.meta.url)
   //   ).then((res) => res.arrayBuffer());
-
-  const res = await fetch("/api/all");
+  const url = new URL("/api/all");
+  const res = await fetch(url);
 
   const data = await res.json();
   const account = data?.[0];
