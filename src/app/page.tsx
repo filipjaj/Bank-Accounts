@@ -20,7 +20,7 @@ export default async function Home() {
     <HydrationBoundary state={dehydrate(queryClient)}>
       <Filters />
       <div className=" ml-6">
-        <h2 className="text-3xl font-bold  text-primary">
+        <h2 className="text-3xl font-bold  text-primary mb-2">
           Sammenlign bankkontoer
         </h2>
         <div className="flex items-center  gap-2">
