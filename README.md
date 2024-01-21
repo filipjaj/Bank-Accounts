@@ -3,7 +3,7 @@
 
 Løsningsforslaget er bygget med inspirasjon fra Finansportalen sin egen sammenligningstjeneste. 
 
-- Hoved funksjonaliteten som er bygd er sammenligningstjenesten der du kan sammenligne flere kontoer opp mot hverandre, og se hvordan utviklingen på disse kan bli om renten holder seg stabil.
+- Hovedfunksjonaliteten som er bygd er sammenligningstjenesten der du kan sammenligne flere kontoer opp mot hverandre, og se hvordan utviklingen på disse kan bli om renten holder seg stabil.
 
 - Tanken rundt løsningen er å bygge den så stabil som mulig gitt forutsetningen, så data og filter kan tilpasses og utvikles basert på A/B tester og bruker feedback. Gitt forutsetningene er det forsatt mye forbedringspotesialle der. 
 
