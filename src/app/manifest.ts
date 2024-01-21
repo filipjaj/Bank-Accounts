@@ -4,6 +4,11 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Kontovelger.no",
     short_name: "Kontovelger",
+    description: "Finn den beste bankkontoen",
+    lang: "nb",
+    start_url: "/",
+    scope: "/",
+
     icons: [
       {
         src: "/icons/android-chrome-192x192.png",
