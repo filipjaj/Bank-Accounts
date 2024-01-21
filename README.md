@@ -20,10 +20,11 @@ Det også bygd et API-lag som formatterer og filtrerer ut data basert på foresp
 
 - En del komponenter/ funskjoner er mindre DRY enn det kunne vært.
 - Følgende filter kan legges inn:
-  -    Krav om månedlig sparing
-  -    Krav om kundeforhold
-  -    Område: Lokal/Nasjonal
-  -    Trapp type
+  -    Krav om månedlig sparing (lagt inn i API men ikke implementert)
+  -    Krav om kundeforhold 
+  -    Område: Lokal/Nasjonal (lagt inn i API men ikke implementert)
+  -    Trapp type (rente pr intervall/rente fra første krone / nei)
+  -    Frie uttak (lagt inn i API men ikke implementert)
 
 - Anbefalningen er pr nå kun basert på rente fra først krone, dette kan opptimaliseres for å gi brukeren en mer personlig anbefaling basert på spare horisont, og total sum.
 - UX/ brukeropplevelsen kan bli en del mer intuitiv
