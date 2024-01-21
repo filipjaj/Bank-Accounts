@@ -29,6 +29,7 @@ const Comparison = () => {
   } = useComparison();
   const [tempSaving, setTempSaving] = useState(startingBalance);
   const [tempYears, setTempYears] = useState(savingYears);
+  const [max, setMax] = useState(100000);
 
   if (!compareCompoundInterest.length)
     return (
@@ -133,12 +134,28 @@ const Comparison = () => {
         <CardContent>
           <div className="flex gap-4 flex-col">
             <div className="flex flex-col gap-2">
-              <Slider
-                value={tempSaving}
-                onValueChange={setTempSaving}
-                max={1000000}
-                step={100}
-              />
+              <div className="flex  gap-2">
+                <Slider
+                  value={tempSaving}
+                  onValueChange={setTempSaving}
+                  max={max}
+                  step={100}
+                />
+                <Button
+                  className="align-self-end"
+                  onClick={() => {
+                    if (max === 1000000) {
+                      setMax(100000);
+                    } else {
+                      setMax(1000000);
+                    }
+                  }}
+                  variant="ghost"
+                >
+                  {max === 1000000 ? "Max 1 000 000" : "Max 100 000"}
+                </Button>
+              </div>
+
               <p>
                 Startbeløp:{" "}
                 <span className="font-semibold">
