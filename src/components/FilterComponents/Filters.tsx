@@ -36,10 +36,9 @@ const DesktopFilters = () => {
       <div className={`md:mx-20 md:flex gap-4 flex-col my-10 `}>
         <Card>
           <CardHeader>
-            <CardTitle>Beste bankkonto for deg</CardTitle>
+            <CardTitle>Filter</CardTitle>
             <CardDescription>
-              Svar på noen spørsmål og finn ut hvilken bankkonto som passer best
-              for deg
+              Bruk filterene under for å finne bankkontoer som passer deg
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -57,9 +56,9 @@ const DesktopFilters = () => {
 const MobileFilters = () => {
   return (
     <Drawer>
-      <DrawerTrigger className=" items-center  rounded-full p-5 z-10    bg-zinc-900  fixed left-6 bottom-6  shadow-lg flex gap-4">
-        <p className=" text-zinc-100 text-lg font-semibold">Filter</p>
-        <SlidersHorizontalIcon className=" text-zinc-100" />
+      <DrawerTrigger className=" items-center  rounded-full p-3 z-10    bg-zinc-900  fixed right-6 top-6  shadow-lg flex gap-4">
+        <p className=" text-zinc-100 text-sm font-semibold">Filter</p>
+        <SlidersHorizontalIcon className=" text-zinc-100 w-3" />
       </DrawerTrigger>
 
       <DrawerContent>

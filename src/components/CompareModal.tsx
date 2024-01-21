@@ -58,7 +58,7 @@ const CompareModal = () => {
         </div>
       </DrawerContent>
 
-      <DrawerTrigger className=" bg-rose-600 shadow-xl z-20  w-10 h-10 flex fixed top-6 right-8 items-center justify-center rounded-full">
+      <DrawerTrigger className=" bg-rose-600 shadow-xl z-20  w-10 h-10 flex fixed bottom-6 right-8 items-center justify-center rounded-full">
         <span className="absolute -top-2 -right-1  rounded-full  bg-stone-950 w-5 shadow-md">
           <p className=" text-sm   text-white  ">{count}</p>
         </span>

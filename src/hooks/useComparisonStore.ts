@@ -1,4 +1,5 @@
 "use client";
+import { toast } from "sonner";
 
 import { FormattedBankData } from "@/lib/formatting/dataFormatting";
 
@@ -85,6 +86,7 @@ const useComparison = () => {
       removeFromComparison(bank);
     } else {
       addToComparison(bank);
+      toast.success(`La til ${bank.accountName} i sammenligningen`);
     }
   };
 

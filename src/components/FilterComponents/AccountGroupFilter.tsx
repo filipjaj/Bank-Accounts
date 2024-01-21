@@ -9,6 +9,45 @@ import {
   CollapsibleTrigger,
 } from "../ui/collapsible";
 
+type AccountFilterValues =
+  | "BSU_AFTER_34"
+  | "FAST01"
+  | "SPAREKONTO_MED_BEGRENSNINGER"
+  | "SPAREKONTO_UTEN_BEGRENSNINGER"
+  | "PENSJONSSPARING"
+  | "BSU"
+  | "BRUKSKONTO"
+  | "DEPOSITUMSKONTO"
+  | "FAST23"
+  | "FAST45";
+
+const convertValueToLabel = (value: AccountFilterValues | string) => {
+  switch (value) {
+    case "BSU_AFTER_34":
+      return "BSU etter fylte 34";
+    case "FAST01":
+      return "Fastrente 0 - 1 år";
+    case "SPAREKONTO_MED_BEGRENSNINGER":
+      return "Sparekonto med begrensninger";
+    case "SPAREKONTO_UTEN_BEGRENSNINGER":
+      return "Sparekonto uten begrensninger";
+    case "PENSJONSSPARING":
+      return "Pensjonssparing";
+    case "BSU":
+      return "BSU";
+    case "BRUKSKONTO":
+      return "Brukskonto";
+    case "DEPOSITUMSKONTO":
+      return "Depositumskonto";
+    case "FAST23":
+      return "Fastrente 2 - 3 år";
+    case "FAST45":
+      return "Fastrente 4 - 5 år";
+    default:
+      return value;
+  }
+};
+
 const AccountGroupFilter = () => {
   const { groups } = useAccountGroup();
   const [collapsed, setCollapsed] = useState(true);
@@ -24,7 +63,7 @@ const AccountGroupFilter = () => {
           <ChevronsDownUpIcon className="w-4  text-muted-foreground" />
         )}
         <p className=" text-muted-foreground text-sm">
-          {collapsed ? "Vis kontotyper" : "Skjul kontotyper"}
+          {collapsed ? "Filtrer på konto type" : "Skjul kontotyper"}
         </p>
       </CollapsibleTrigger>
       <CollapsibleContent className=" flex gap-2 flex-wrap">
@@ -34,7 +73,7 @@ const AccountGroupFilter = () => {
             toggle={group.toggle}
             key={group.value}
           >
-            {group.value}
+            {convertValueToLabel(group?.value)}
           </SelectableBadge>
         ))}
       </CollapsibleContent>
