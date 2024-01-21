@@ -51,8 +51,7 @@ const Comparison = () => {
             href="/"
             className={`flex  items-center gap-4 ${buttonVariants({
               variant: "default",
-              size: "lg",
-            })}  mx-auto mt-10
+            })} 
          `}
           >
             <ArrowLeftIcon className="w-4 h-4 text-zinc-white" />
