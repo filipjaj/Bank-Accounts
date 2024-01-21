@@ -46,13 +46,23 @@ export default async function Image() {
         </p>
         <p
           style={{
-            fontSize: 20,
+            fontSize: 50,
             background: "#dc2626",
 
             color: "white",
           }}
         >
-          Med renter fra {account.interestRate?.[0]?.interest} %
+          <span
+            style={{
+              fontSize: 20,
+              background: "#dc2626",
+
+              color: "white",
+            }}
+          >
+            Med renter fra{" "}
+          </span>{" "}
+          {account.interestRate?.[0]?.interest} %
         </p>
       </div>
     ),

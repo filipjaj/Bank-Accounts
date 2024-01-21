@@ -62,7 +62,7 @@ export default async function Image() {
           >
             Med renter fra{" "}
           </span>{" "}
-          {account.interestRate.interest} %
+          {account.interestRate?.[0]?.interest} %
         </p>
       </div>
     ),
