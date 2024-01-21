@@ -15,11 +15,11 @@ export const FiltersSchema = z.enum([
 
 export const IncomingFiltersSchema = z.union([
   z.object({
-    key: z.enum(["gruppe", "markedsomraade"]),
+    key: z.enum(["markedsomraade"]),
     value: z.string(),
   }),
   z.object({
-    key: z.enum(["medlemskap"]),
+    key: z.enum(["medlemskap", "gruppe"]),
     value: z.array(z.string()),
   }),
   z.object({
@@ -36,7 +36,7 @@ const removeEmptyFilters = (
   const filteredFilters = incomingFilters.filter((filter) => {
     const { key, value } = filter;
 
-    if (key === "medlemskap") {
+    if (key === "medlemskap" || key === "gruppe") {
       return value.length > 0;
     }
 

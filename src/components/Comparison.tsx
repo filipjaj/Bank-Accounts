@@ -11,7 +11,8 @@ const Comparison = () => {
 
   return (
     <div className="p-10">
-      <div className="aspect-[4/5]">
+      <h1 className="text-2xl font-semibold">Sammenligning</h1>
+      <div className="aspect-[4/5] md:aspect-video">
         <ResponsiveLine
           data={compareCompoundInterest}
           margin={{ top: 10, right: 40, bottom: 40, left: 40 }}
@@ -63,10 +64,10 @@ const Comparison = () => {
       <div className="flex flex-col gap-10 mt-10">
         {compareCompoundInterest.map((data) => {
           return (
-            <Card key={data.id} className="relative">
+            <Card key={data.id} className="relative p-2">
               <Badge
                 variant="destructive"
-                className="absolute right-5 top-5 cursor-pointer"
+                className="absolute right-2 top-2 cursor-pointer"
                 onClick={() => toggleComparison(data.allData)}
               >
                 Fjern

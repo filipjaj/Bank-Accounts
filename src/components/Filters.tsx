@@ -2,10 +2,10 @@
 import useAge from "@/hooks/useAge";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import useMoney from "@/hooks/useMoney";
-import { SlidersHorizontalIcon } from "lucide-react";
-import Link from "next/link";
+import { PanelBottomCloseIcon, SlidersHorizontalIcon } from "lucide-react";
+
+import AccountGroupFilter from "./AccountGroupFIlter";
 import MemberShipFilter from "./MemberShipFilter";
-import { buttonVariants } from "./ui/button";
 import {
   Card,
   CardContent,
@@ -14,7 +14,18 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "./ui/collapsible";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerFooter,
+  DrawerTrigger,
+} from "./ui/drawer";
 import { Input } from "./ui/input";
 const Filters = () => {
   const isDesktop = useMediaQuery("(min-width: 768px");
@@ -66,16 +77,21 @@ const DesktopFilters = () => {
                 <p>kr</p>
               </div>
             </div>
-            <MemberShipFilter />
+
+            <Collapsible>
+              <CollapsibleTrigger className="mt-6 text-sm text-muted-foreground">
+                Avanserte filter
+              </CollapsibleTrigger>
+
+              <CollapsibleContent className="mt-6  italic">
+                <div className="mt-6 flex flex-col gap-3">
+                  <AccountGroupFilter />
+                  <MemberShipFilter />
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
           </CardContent>
-          <CardFooter>
-            <Link
-              href="/compare"
-              className={buttonVariants({ variant: "outline" })}
-            >
-              Sammenlign bankkontoer
-            </Link>
-          </CardFooter>
+          <CardFooter></CardFooter>
         </Card>
       </div>
     </>
@@ -85,12 +101,21 @@ const DesktopFilters = () => {
 const MobileFilters = () => {
   return (
     <Drawer>
-      <DrawerTrigger className="  rounded-full p-5 z-10    bg-zinc-900  fixed left-6 bottom-6  shadow-lg">
+      <DrawerTrigger className=" items-center  rounded-full p-5 z-10    bg-zinc-900  fixed left-6 bottom-6  shadow-lg flex gap-4">
+        <p className=" text-zinc-100 text-lg font-semibold">Filter</p>
         <SlidersHorizontalIcon className=" text-zinc-100" />
       </DrawerTrigger>
 
       <DrawerContent>
-        <DesktopFilters />
+        <div className="max-w-md w-full mx-auto flex flex-col overflow-auto p-4 rounded-t-[10px]">
+          <DesktopFilters />
+        </div>
+        <DrawerFooter>
+          <DrawerClose className="rounded-full p-5 z-10  flex gap-4   items-center justify-center   bg-zinc-900   shadow-lg">
+            <p className=" text-zinc-100 text-lg font-semibold">Steng filter</p>
+            <PanelBottomCloseIcon className=" text-zinc-100" />
+          </DrawerClose>
+        </DrawerFooter>
       </DrawerContent>
     </Drawer>
   );

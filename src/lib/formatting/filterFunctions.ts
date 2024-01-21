@@ -7,8 +7,12 @@ import {
   numberIsBetween,
 } from "./filterUtils";
 
-const filterGroup = (data: BankDataType[number], filterValue: string) => {
-  return compareStringValues(data.gruppe, filterValue);
+const filterGroup = (data: BankDataType[number], filterValue: string[]) => {
+  if (filterValue?.length === 0) return true;
+
+  const groupIsIncluded = filterValue.includes(data.gruppe);
+
+  return groupIsIncluded;
 };
 
 const filterFreeWithdrawal = (
@@ -81,7 +85,7 @@ export const getFilterFunction = (filter: z.infer<typeof FiltersSchema>) => {
   }
 
   if (validatedFilter === "gruppe") {
-    return filterGroup as FilterFunctionString;
+    return filterGroup as FilterFunctionStringArray;
   }
 
   if (validatedFilter === "markedsomraade") {

@@ -1,6 +1,6 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
-import useMembership from "@/hooks/useMembership";
+import useAccountGroup from "@/hooks/useAccounGroup";
 import { ChevronsDownUpIcon, ChevronsUpDownIcon } from "lucide-react";
 import { useState } from "react";
 import {
@@ -9,20 +9,20 @@ import {
   CollapsibleTrigger,
 } from "./ui/collapsible";
 
-const MemberShipFilter = () => {
-  const { memberships } = useMembership();
+const AccountGroupFilter = () => {
+  const { groups } = useAccountGroup();
   const [collapsed, setCollapsed] = useState(true);
   return (
-    <Collapsible className="flex flex-col gap-3" open={!collapsed}>
+    <Collapsible className=" flex flex-col gap-3" open={!collapsed}>
       <CollapsibleContent className=" flex gap-2 flex-wrap">
-        {memberships?.map((membership) => (
+        {groups?.map((group) => (
           <Badge
             className="cursor-pointer"
-            onClick={membership.toggle}
-            key={membership.value}
-            variant={membership.selected ? "default" : "outline"}
+            onClick={group.toggle}
+            key={group.value}
+            variant={group.selected ? "default" : "outline"}
           >
-            {membership.value}
+            {group.value}
           </Badge>
         ))}
       </CollapsibleContent>
@@ -35,10 +35,10 @@ const MemberShipFilter = () => {
         ) : (
           <ChevronsDownUpIcon className="w-4" />
         )}
-        <p>Medlem av organisasjon?</p>
+        <p>{collapsed ? "Vis kontotyper" : "Skjul kontotyper"}</p>
       </CollapsibleTrigger>
     </Collapsible>
   );
 };
 
-export default MemberShipFilter;
+export default AccountGroupFilter;

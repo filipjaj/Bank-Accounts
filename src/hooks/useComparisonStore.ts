@@ -93,6 +93,7 @@ const useComparison = () => {
     clearComparison,
     isInComparison,
     compareCompoundInterest,
+    count: comparison.length,
   };
 };
 

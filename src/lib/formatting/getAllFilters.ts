@@ -7,14 +7,8 @@ import {
   getUniqueStringValues,
 } from "./filterUtils";
 
-const createGroupFilter = (data: BankDataType) => {
-  const group = getUniqueStringValues(data, "gruppe");
-
-  return group;
-};
-
 const getAllFilters = (data: BankDataType) => {
-  const group = createGroupFilter(data);
+  const group = getUniqueStringValues(data, "gruppe");
   const freeWithdrawalSpan = getNumberSpan(data, "frie_uttak");
   const marketArea = getUniqueStringValues(data, "markedsomraade");
   const age = getNumberSpanTwoKeys(data, "min_alder", "maks_alder");

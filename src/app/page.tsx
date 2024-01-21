@@ -1,6 +1,6 @@
 import BankAccountList from "@/components/BankAccountList";
+import CompareModal from "@/components/CompareModal";
 import Filters from "@/components/Filters";
-import { buttonVariants } from "@/components/ui/button";
 import { getBankAccounts } from "@/lib/serverFunctions";
 
 import {
@@ -8,7 +8,6 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import Link from "next/link";
 
 export default async function Home() {
   const queryClient = new QueryClient();
@@ -19,6 +18,8 @@ export default async function Home() {
   });
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
+      <CompareModal />
+
       <Filters />
       <BankAccountList />
     </HydrationBoundary>
