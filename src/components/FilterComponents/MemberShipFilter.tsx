@@ -28,6 +28,7 @@ const MemberShipFilter = () => {
       <CollapsibleContent className=" flex gap-2 flex-wrap">
         {memberships?.map((membership) => (
           <SelectableBadge
+            key={membership.value}
             selected={membership.selected}
             toggle={membership.toggle}
           >

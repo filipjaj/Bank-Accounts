@@ -29,7 +29,11 @@ const AccountGroupFilter = () => {
       </CollapsibleTrigger>
       <CollapsibleContent className=" flex gap-2 flex-wrap">
         {groups?.map((group) => (
-          <SelectableBadge selected={group.selected} toggle={group.toggle}>
+          <SelectableBadge
+            selected={group.selected}
+            toggle={group.toggle}
+            key={group.value}
+          >
             {group.value}
           </SelectableBadge>
         ))}
