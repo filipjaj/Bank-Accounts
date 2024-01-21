@@ -58,11 +58,11 @@ const AccountGroupFilter = () => {
         className="flex items-center gap-1 "
       >
         {collapsed ? (
-          <ChevronsUpDownIcon className="w-4    text-muted-foreground " />
+          <ChevronsUpDownIcon className="w-4    " />
         ) : (
-          <ChevronsDownUpIcon className="w-4  text-muted-foreground" />
+          <ChevronsDownUpIcon className="w-4  " />
         )}
-        <p className=" text-muted-foreground text-sm">
+        <p className="  text-sm">
           {collapsed ? "Filtrer på konto type" : "Skjul kontotyper"}
         </p>
       </CollapsibleTrigger>

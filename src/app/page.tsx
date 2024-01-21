@@ -26,7 +26,7 @@ export default async function Home() {
         <div className="flex items-center  gap-2">
           <SlidersHorizontalIcon className="w-6 text-muted-foreground" />
           <p className="text-sm text-muted-foreground">
-            Bruk filterne til å finne en bank som passer deg
+            Bruk filterne over for å finne bankkontoer som passer deg
           </p>
         </div>
       </div>

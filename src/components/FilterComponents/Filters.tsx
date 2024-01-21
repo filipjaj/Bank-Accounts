@@ -18,6 +18,7 @@ import {
 } from "../ui/drawer";
 import AccountGroupFilter from "./AccountGroupFilter";
 import AgeFilter from "./AgeFilter";
+import BanksFiltering from "./BanksFiltering";
 import MemberShipFilter from "./MemberShipFilter";
 import MoneyFilter from "./MoneyFilter";
 const Filters = () => {
@@ -44,6 +45,8 @@ const DesktopFilters = () => {
           <CardContent>
             <AgeFilter />
             <MoneyFilter />
+            <BanksFiltering />
+            <p className="text-sm text-muted-foreground">Avanserte filter</p>
             <AccountGroupFilter />
             <MemberShipFilter />
           </CardContent>

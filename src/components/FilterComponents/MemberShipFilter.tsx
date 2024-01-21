@@ -13,17 +13,17 @@ const MemberShipFilter = () => {
   const { memberships } = useMembership();
   const [collapsed, setCollapsed] = useState(true);
   return (
-    <Collapsible className="flex flex-col gap-3 py-4" open={!collapsed}>
+    <Collapsible className="flex flex-col gap-3 py-2" open={!collapsed}>
       <CollapsibleTrigger
         onClick={() => setCollapsed(!collapsed)}
         className="flex items-center "
       >
         {collapsed ? (
-          <ChevronsUpDownIcon className="w-4 text-muted-foreground" />
+          <ChevronsUpDownIcon className="w-4 " />
         ) : (
-          <ChevronsDownUpIcon className="w-4 text-muted-foreground" />
+          <ChevronsDownUpIcon className="w-4 " />
         )}
-        <p className="text-sm text-muted-foreground">Medlem av organisasjon?</p>
+        <p className="text-sm ">Medlem av organisasjon?</p>
       </CollapsibleTrigger>
       <CollapsibleContent className=" flex gap-2 flex-wrap">
         {memberships?.map((membership) => (
