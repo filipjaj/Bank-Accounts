@@ -73,7 +73,9 @@ const Comparison = () => {
           data={compareCompoundInterest}
           margin={{ top: 10, right: 40, bottom: 40, left: 40 }}
           xScale={{
-            type: "point",
+            type: "linear",
+            min: "auto",
+            max: "auto",
           }}
           yScale={{
             type: "linear",
@@ -134,7 +136,8 @@ const Comparison = () => {
               <Slider
                 value={tempSaving}
                 onValueChange={setTempSaving}
-                max={100000}
+                max={1000000}
+                step={100}
               />
               <p>
                 Startbeløp:{" "}
