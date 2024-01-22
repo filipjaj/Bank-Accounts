@@ -38,6 +38,8 @@ Det også bygd et API-lag som formatterer og filtrerer ut data basert på foresp
 - Optimalisering av innlastning av side, første load av data kan statisk genereres feks.
 - Det er noen steder der det er brukt type casting etc, som burde oppdateres til å bruke generics.
 - inkonsistent bruk av zod/types
+- Error / empty states når noe går galt, eller filteret ikke returnerer noe data
+
 
 - Gameification av sammenligningen, forskjellen på 6,5% og 6,8% er ikke sykt mye. Så en fin feature å få inn hadde vært å la brukeren velge en enhet de vil se besparelsene sine i. Feks du sparer 3 latter i året på å bytte bank. 
 
