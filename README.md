@@ -36,7 +36,8 @@ Det også bygd et API-lag som formatterer og filtrerer ut data basert på foresp
 - API-laget kan på sikt utvides til å bruke en database, der tjenesten kan supplere data. Feks historisk rente, og hvordan banken tilpasser seg når styringsrenten endres.
 - Accessibility er hensyntatt ved at Radix har en del innebygd, utover det er det mye som kan gjøres
 - Optimalisering av innlastning av side, første load av data kan statisk genereres feks.
-
+- Det er noen steder der det er brukt type casting etc, som burde oppdateres til å bruke generics.
+- inkonsistent bruk av zod/types
 
 
 
