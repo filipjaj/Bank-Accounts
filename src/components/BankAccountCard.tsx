@@ -1,6 +1,6 @@
 import useComparison from "@/hooks/useComparisonStore";
 import { FormattedBankData } from "@/lib/formatting/dataFormatting";
-import formatMoney from "@/lib/formatting/fomrmatMoney";
+import formatMoney from "@/lib/formatting/formatMoney";
 import { Badge } from "./ui/badge";
 import {
   Card,

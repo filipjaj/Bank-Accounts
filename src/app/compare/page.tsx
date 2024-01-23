@@ -1,4 +1,4 @@
-import Comparison from "@/components/Comparison";
+import Comparison from "@/components/ComparisonComponents/Comparison";
 
 const ComparePage = () => {
   return <Comparison />;
