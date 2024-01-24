@@ -42,4 +42,9 @@ Det også bygd et API-lag som formatterer og filtrerer ut data basert på foresp
 - [ ] Sammenligning er ikke alltid realistisk, da feks BSU har begrensninger for mye du kan spare. Og andre kontoer capper renten ved ett viss nivå.
 - [ ] Valideringen/transformeringen av noen tekster må forbedres, feks Fastrente 12 mnd (500`-2``) fra Hjelmeland Sparebank
 
+## AI Funksjonalitet
+
+- Brukeren beskriver seg selv og sin situasjon, og får anbefaling på hvilke kontoer som passer de.
+  - Feks "Jeg er en dame på 60 år som vil av penger til jeg er 70" ville blitt anbefalt SparekontoPlussFast 5 år fra Bluestep Bank AB (publ), filial Oslo. Med begrunnelsen "Denne kontoen passer perfekt for deg, da pengene stå trygt med 2,65% rente i 5 år og etter det kan jeg anbefale en ny konto til deg". og SparekontoPlussFast 1 år med teksten "Om du er interessert i høyere rente, kan jeg anbefale denne kontoen med 5.3 % rente, denne kan være bedre om du er interessert i høyere rente idag, og ikke har et problem med å finne en ny konto om 1 år"
+
 _README.md oppdateres fortløpende, og ble sist oppdatert 24.januar 2024. For andre ting som det jobbes på se issues, og åpne pull requests_

@@ -38,7 +38,7 @@ const CompareModal = () => {
             </div>
             <Link
               onClick={() => setCollapsed(!collapsed)}
-              href="/compare"
+              href="/sammenligne"
               className={`${buttonVariants({
                 variant: "default",
                 size: "lg",
