@@ -11,6 +11,7 @@ const BankAccountList = () => {
 
   const { ref } = useInView({
     threshold: 0,
+    rootMargin: "300px",
     onChange: (inView) => {
       if (inView) {
         fetchNextPage();

@@ -27,18 +27,19 @@ Det også bygd et API-lag som formatterer og filtrerer ut data basert på foresp
   - Trapp type (rente pr intervall/rente fra første krone / nei)
   - Frie uttak (lagt inn i API men ikke implementert)
 
-- Anbefalningen er pr nå kun basert på rente fra først krone, dette kan opptimaliseres for å gi brukeren en mer personlig anbefaling basert på spare horisont, og total sum/ start sum.
-- UX/brukeropplevelsen kan bli en del mer intuitiv
-- Som UI bibliotek er shadcn/ui brukt, dette gir en litt "generisk" følelse, som jeg gjerne skulle bruk mer tid på å tilpasse.
-- Radix som er underligende under shadcn/ui har jeg opplevd noen issues med tidligere, som det kan brukes mer tid på å undersøke.
-- API-laget kan på sikt utvides til å bruke en database, der tjenesten kan supplere data. Feks historisk rente, og hvordan banken tilpasser seg når styringsrenten endres.
-- Accessibility er hensyntatt ved at Radix har en del innebygd, utover det er det mye potensial.
-- Optimalisering av innlastning av side, første load av data kan statisk genereres feks.
-- Det er noen steder der det er brukt type casting etc, som burde oppdateres til å bruke generics.
-- inkonsistent bruk av zod/types
-- Error / empty states når noe går galt, eller filteret ikke returnerer noe data
+[ ] Anbefalningen er pr nå kun basert på rente fra først krone, dette kan opptimaliseres for å gi brukeren en mer personlig anbefaling basert på spare horisont, og total sum/ start sum.
+[ ] UX/brukeropplevelsen kan bli en del mer intuitiv
+[ ] Som UI bibliotek er shadcn/ui brukt, dette gir en litt "generisk" følelse, som jeg gjerne skulle bruk mer tid på å tilpasse.
+[ ] Radix som er underligende under shadcn/ui har jeg opplevd noen issues med tidligere, som det kan brukes mer tid på å undersøke.
+[ ] API-laget kan på sikt utvides til å bruke en database, der tjenesten kan supplere data. Feks historisk rente, og hvordan banken tilpasser seg når styringsrenten endres.
+[ ] Accessibility er hensyntatt ved at Radix har en del innebygd, utover det er det mye potensial.
+[ ] Optimalisering av innlastning av side, første load av data kan statisk genereres feks.
+[ ] Det er noen steder der det er brukt type casting etc, som burde oppdateres til å bruke generics.
+[ ] inkonsistent bruk av zod/types
+[x] Error / empty states når noe går galt, eller filteret ikke returnerer noe data
 
-- Gameification av sammenligningen, forskjellen på 6,5% og 6,8% er ikke sykt mye. Så en fin feature å få inn hadde vært å la brukeren velge en enhet de vil se besparelsene sine i. Feks du sparer 3 latter i året på å bytte bank.
-- Sammenligning er ikke alltid realistisk, da feks BSU har begrensninger for mye du kan spare. Og andre kontoer capper renten ved ett viss nivå.
+[ ] Gameification av sammenligningen, forskjellen på 6,5% og 6,8% er ikke sykt mye. Så en fin feature å få inn hadde vært å la brukeren velge en enhet de vil se besparelsene sine i. Feks du sparer 3 latter i året på å bytte bank.
+[ ] Sammenligning er ikke alltid realistisk, da feks BSU har begrensninger for mye du kan spare. Og andre kontoer capper renten ved ett viss nivå.
+[ ] Valideringen/transformeringen av noen tekster må forbedres, feks Fastrente 12 mnd (500`-2``) fra Hjelmeland Sparebank
 
-_README.md oppdateres fortløpende, og ble sist oppdatert 23.januar 2024. For andre ting som det jobbes på se issues, og åpne pull requests_
+_README.md oppdateres fortløpende, og ble sist oppdatert 24.januar 2024. For andre ting som det jobbes på se issues, og åpne pull requests_
