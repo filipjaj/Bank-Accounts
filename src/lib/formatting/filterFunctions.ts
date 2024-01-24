@@ -66,7 +66,7 @@ const filterMembership = (
 
 const filterBank = (data: BankDataType[number], filterValue: string[]) => {
   if (filterValue?.length === 0) return true;
-
+//TODO: fix this logic
   const bankIsIncluded = filterValue.includes(data.leverandor_tekst);
 
   return bankIsIncluded;
