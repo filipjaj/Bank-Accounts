@@ -126,4 +126,6 @@ const useComparison = () => {
   };
 };
 
+export type ComparisonType = ReturnType<typeof useComparison>;
+export type CompoundComparisonType = ComparisonType["compareCompoundInterest"];
 export default useComparison;

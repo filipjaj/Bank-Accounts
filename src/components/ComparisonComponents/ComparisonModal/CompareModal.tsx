@@ -4,16 +4,16 @@ import useComparison from "@/hooks/useComparisonStore";
 import { PiggyBankIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { Card, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardHeader, CardTitle } from "../../ui/card";
 import {
   Drawer,
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "../ui/drawer";
+} from "../../ui/drawer";
 
-import ComparisonCard from "./ComparisonCard";
+import ComparisonCard from "./ComparisonPreviewCard";
 
 const CompareModal = () => {
   const { count, comparison, toggleComparison } = useComparison();

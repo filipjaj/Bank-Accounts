@@ -1,6 +1,6 @@
 import { FormattedBankData } from "@/lib/formatting/dataFormatting";
-import { Badge } from "../ui/badge";
-import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import { Badge } from "../../ui/badge";
+import { Card, CardDescription, CardHeader, CardTitle } from "../../ui/card";
 
 const ComparisonCard = ({
   compare,
