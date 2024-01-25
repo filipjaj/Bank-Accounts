@@ -63,10 +63,13 @@ const filterItems = (
   incomingFilters: z.infer<typeof IncomingFiltersArraySchema>
 ) => {
   const nonEmptyFilters = removeEmptyFilters(incomingFilters);
-  const filters = IncomingFiltersArraySchema.parse(nonEmptyFilters);
-  console.log(filters);
+  const filters = IncomingFiltersArraySchema.safeParse(nonEmptyFilters);
+  if (!filters.success) {
+    return filters.error;
+  }
+
   const filteredData = data.filter((item) => {
-    return filters.every((filter) => {
+    return filters.data.every((filter) => {
       const { key, value } = filter;
 
       const filterFunction = getFilterFunction(key);

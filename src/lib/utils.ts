@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { z } from "zod";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -25,4 +26,8 @@ export const convertToPagination = <T>(
     numberOfPages: Math.ceil(data.length / perPage),
     total: data.length,
   };
+};
+
+export const isZodError = (error: any): error is z.ZodError => {
+  return error.issues !== undefined;
 };

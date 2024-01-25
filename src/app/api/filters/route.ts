@@ -2,7 +2,7 @@ import bankData from "@/lib/bank-data";
 import { FormattedBankData } from "@/lib/formatting/dataFormatting";
 import filterItems from "@/lib/formatting/filterItems";
 import getAllFilters from "@/lib/formatting/getAllFilters";
-import { convertToPagination } from "@/lib/utils";
+import { convertToPagination, isZodError } from "@/lib/utils";
 export async function GET() {
   const filters = getAllFilters(bankData.feed.entry);
 
@@ -20,6 +20,14 @@ export async function POST(request: Request) {
   const pageSize = body.pageSize ?? 10;
 
   const resultFull = filterItems(bankData.feed.entry, body.filters);
+
+  if (isZodError(resultFull))
+    return new Response(JSON.stringify(resultFull, null, 4), {
+      headers: {
+        "content-type": "application/json;charset=UTF-8",
+      },
+      status: 400,
+    });
 
   const { result, numberOfPages, page, total } = convertToPagination(
     resultFull,
